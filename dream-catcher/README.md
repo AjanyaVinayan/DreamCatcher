@@ -50,14 +50,14 @@ Create a `.env` file in the root directory:
 cp .env.example .env
 ```
 
-Edit `.env` and add your Anthropic API key:
+Edit `.env` and add your Gemini API key:
 
 ```
-ANTHROPIC_API_KEY=your_api_key_here
-PORT=3000
+GEMINI_API_KEY=your_api_key_here
+GEMINI_MODEL=gemini-2.5-flash
 ```
 
-Get your API key from: https://console.anthropic.com/
+Get your API key from Google AI Studio: https://aistudio.google.com/apikey
 
 ### 3. Run the Application
 
@@ -94,13 +94,18 @@ Make sure your code is in a Git repository (GitHub, GitLab, etc.)
 4. Configure the service:
    - **Name**: dream-journal (or your choice)
    - **Environment**: Node
-   - **Build Command**: `npm install`
+   - **Build Command**: `npm ci`
    - **Start Command**: `npm start`
+
+   The project `.npmrc` forces `sqlite3` to build from source during dependency
+   installation. This avoids using prebuilt binaries that may require a newer
+   glibc version than the Render runtime provides.
 
 ### 3. Add Environment Variables
 
 In the Render dashboard, add:
-- `ANTHROPIC_API_KEY`: Your Anthropic API key
+- `GEMINI_API_KEY`: Your Gemini API key
+- `GEMINI_MODEL`: `gemini-2.5-flash` (optional)
 
 ### 4. Deploy
 
